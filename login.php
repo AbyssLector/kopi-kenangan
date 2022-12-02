@@ -1,3 +1,31 @@
+<?php
+include 'db.php';
+
+error_reporting(0);
+
+session_start();
+
+if (isset($_SESSION['username'])) {
+    // echo "<script>alert('Success Login!')</script>";
+    header("Location: home.php");
+}
+
+if (isset($_POST['submit'])) {
+    $notelp = $conn->real_escape_string($_POST['notelp']);
+    $password = $conn->real_escape_string($_POST['password']);
+    // $password = md5($_POST['password']);
+
+    $sql = "SELECT * FROM user WHERE notelp='$notelp' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+    if ($result->num_rows > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION['username'] = $row['username'];
+        header("Location: home.php");
+    } else {
+        echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +36,7 @@
     <title>Kopi Kenangan - Cart</title>
     <!-- <link rel="stylesheet" href="dist/output.css"> -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -28,24 +54,19 @@
                         <span class="hamburger-line origin-bottom-left transition duration-300 ease-in-out"></span>
                     </button>
 
-                    <nav id="nav-menu"
-                        class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+                    <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                         <ul class="block lg:flex">
                             <li class="group">
-                                <a href="#"
-                                    class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">Home</a>
+                                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">Home</a>
                             </li>
                             <li class="group">
-                                <a href="#"
-                                    class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">About</a>
+                                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">About</a>
                             </li>
                             <li class="group">
-                                <a href="#"
-                                    class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">App</a>
+                                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">App</a>
                             </li>
                             <li class="group">
-                                <a href="#"
-                                    class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">Cart</a>
+                                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">Cart</a>
                             </li>
                         </ul>
                     </nav>
@@ -62,21 +83,17 @@
                 <div class="container mx-auto my-10 px-7">
                     <h3 class="text-black text-center mb-6 w-3/5  mx-auto">Silahkan mengisi username dan password untuk
                         Log In</h3>
-                    <form action="#">
+                    <form action="" method="post">
                         <div class="w-full px-4 mb-8">
-                            <label for="no-telp" class="text-black font-bold">No Telpon</label>
-                            <input type="text" id="no-telp"
-                                class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]">
+                            <label for="notelp" class="text-black font-bold">No Telpon</label>
+                            <input type="text" id="notelp" name="notelp" class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]" required>
                         </div>
                         <div class="w-full px-4 mb-8">
                             <label for="pass" class="text-black font-bold">Password</label>
-                            <input type="password" id="pass"
-                                class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]">
+                            <input type="password" id="pass" name="password" class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]" required>
                         </div>
                         <div class="w-full px-4 mb-8">
-                            <button
-                                class="w-full py-2 bg-[#BB2028] rounded-xl text-white font-bold text-center hover:opacity-80">Log
-                                In</button>
+                            <button type="submit" name="submit" value="submit" class="w-full py-2 bg-[#BB2028] rounded-xl text-white font-bold text-center hover:opacity-80">Log In</button>
                         </div>
                     </form>
                 </div>
