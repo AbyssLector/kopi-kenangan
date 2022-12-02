@@ -1,28 +1,31 @@
 <?php
 include 'db.php';
 
-error_reporting(0);
-
 session_start();
-
-if (isset($_SESSION['username'])) {
-    // echo "<script>alert('Success Login!')</script>";
-    header("Location: home.php");
-}
+error_reporting(0);
 
 if (isset($_POST['submit'])) {
     $notelp = $conn->real_escape_string($_POST['notelp']);
     $password = $conn->real_escape_string($_POST['password']);
     // $password = md5($_POST['password']);
 
-    $sql = "SELECT * FROM user WHERE notelp='$notelp' AND password='$password'";
+    $sql = "SELECT * FROM user WHERE notelp='$notelp'";
     $result = mysqli_query($conn, $sql);
     if ($result->num_rows > 0) {
         $row = mysqli_fetch_assoc($result);
-        $_SESSION['username'] = $row['username'];
-        header("Location: home.php");
+
+        if (password_verify($password, $row["password"])) {
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['notelp'] = $row['notelp'];
+            // print_r($_SESSION);
+            // die($_SESSION['notelp'] . $_SESSION['username']);
+            header("Location: home.php");
+            exit();
+        } else {
+            echo "<script>alert('Password anda salah!')</script>";
+        }
     } else {
-        echo "<script>alert('Email atau password Anda salah. Silahkan coba lagi!')</script>";
+        echo "<script>alert('Nomor telepon belum terdaftar, silahkan daftar terlebih dahulu')</script>";
     }
 }
 ?>
