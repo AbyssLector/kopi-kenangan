@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopi Kenangan - Cart</title>
+    <link rel="stylesheet" href="dist/output.css">
+</head>
+<body>
+    <!-- Header Start -->
+     <header class="bg-white absolute top-0 left-0 w-full flex items-center z-50 ">
+        <div class="container">
+            <div class="flex items-center justify-between relative">
+                <div class="px-4">
+                  <img src="dist/img/logo.png" alt="logo kopken" class="w-20 block py-4 pl-6">  
+                </div>
+                <div class="flex items-center px-4">
+                    <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
+                        <span class="hamburger-line origin-top-left transition duration-300 ease-in-out"></span>
+                        <span class="hamburger-line transition duration-300 ease-in-out"></span>
+                        <span class="hamburger-line origin-bottom-left transition duration-300 ease-in-out"></span>
+                    </button>
+
+                    <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+                        <ul class="block lg:flex">
+                            <li class="group">
+                                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-kopkenred">Home</a>
+                            </li>
+                            <li class="group">
+                                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-kopkenred">About</a>
+                            </li>
+                            <li class="group">
+                                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-kopkenred">App</a>
+                            </li>
+                            <li class="group">
+                                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-kopkenred">Cart</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+     </header>
+    <!-- Header End -->
+
+    <!-- login section start-->
+    <section class="bg-kopkengrey h-screen flex flex-wrap">
+        <div class="px-4 w-1/3 flex mx-auto items-center">
+            <div name="login" class="bg-white rounded-xl overflow-hidden shadow-lg">
+                <div class="container mx-auto my-10 px-7">
+                    <h3 class="text-black text-center mb-6 w-3/5  mx-auto">Silahkan mengisi username dan password untuk Log In</h3>
+                    <form action="#">
+                        <div class="w-full px-4 mb-8">
+                           <label for="no-telp" class="text-black font-bold">No Telpon</label>
+                           <input type="text" id="no-telp" class="w-full bg-kopkengrey text-black p-3 rounded-md focus:outline-none focus:ring-kopkenred focus:ring-1 focus:border-kopkenred">
+                        </div>
+                        <div class="w-full px-4 mb-8">
+                           <label for="pass" class="text-black font-bold">Password</label>
+                           <input type="password" id="pass" class="w-full bg-kopkengrey text-black p-3 rounded-md focus:outline-none focus:ring-kopkenred focus:ring-1 focus:border-kopkenred">
+                        </div>
+                        <div class="w-full px-4 mb-8">
+                            <button class="w-full py-2 bg-kopkenred rounded-xl text-white font-bold text-center hover:opacity-80">Log In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- login section end -->
+    
+    <!-- Footer Start -->
+    <footer class="bg-black pt-24 pb-12">
+        <div class="flex flex-wrap ">
+            <div class="w-full px-4 mb-12">
+                <h3 class="text-white text-center mb-4">Copyright @2022 <span class="font-bold">AIS 7 & 10 Team</span> 😊😊</h3>
+                <h3 class="text-white text-center">This web is made for AIS Class final project</h3>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <script src="dist/js/script.js"></script>
+</body>
+</html>
