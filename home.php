@@ -23,12 +23,10 @@ if (!isset($_SESSION['notelp']) && !isset($_SESSION['username'])) {
 <body>
   <!-- Header Start -->
   <header class="bg-white fixed top-0 left-0 w-full flex items-center z-50 mb-0">
-    <div class="container">
+    <div class="container mx-auto w-[85%]">
       <div class="flex items-center justify-between relative">
-        <div class="px-4">
-          <img src="dist/img/logo.png" alt="logo kopken" class="w-20 block py-4 pl-6">
-        </div>
-        <div class="flex items-center px-4">
+        <img src="dist/img/logo.png" alt="logo kopken" class="w-20 block py-4 pl-6">
+        <div class="flex items-center">
           <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
             <span class="hamburger-line origin-top-left transition duration-300 ease-in-out"></span>
             <span class="hamburger-line transition duration-300 ease-in-out"></span>
@@ -41,13 +39,13 @@ if (!isset($_SESSION['notelp']) && !isset($_SESSION['username'])) {
                 <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">Home</a>
               </li>
               <li class="group">
-                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">About</a>
+                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">History</a>
               </li>
               <li class="group">
-                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">App</a>
+                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">Login</a>
               </li>
               <li class="group">
-                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">Cart</a>
+                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">Logout</a>
               </li>
             </ul>
           </nav>

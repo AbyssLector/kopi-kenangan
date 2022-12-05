@@ -16,9 +16,9 @@ session_start();
 
 <body>
     <!-- login section start-->
-    <section class="bg-kopkengrey h-screen flex flex-wrap">
-        <div class="px-4 w-1/3 flex mx-auto items-center">
-            <div name="login" class="bg-white rounded-xl overflow-hidden shadow-lg">
+    <section class="h-screen flex flex-wrap">
+        <div class="container px-4 w-1/3 flex mx-auto items-center">
+            <div name="login" class="bg-white rounded-xl overflow-hidden shadow-lg mx-auto border-black border-2">
                 <div class="container mx-auto my-10 px-7">
                     <h3 class="text-black text-center mb-6 w-3/5  mx-auto">Silahkan mengisi no. telp dan password untuk
                         Log In</h3>
@@ -35,6 +35,7 @@ session_start();
                             <button type="submit" name="submit" value="submit" class="w-full py-2 bg-[#BB2028] rounded-xl text-white font-bold text-center hover:opacity-80">Log In</button>
                         </div>
                     </form>
+                    <p class="text-center">Doesn't have account yet? <a href="\register.php" class="text-red-600">Register here</a></p>
                 </div>
             </div>
         </div>
