@@ -1,33 +1,5 @@
 <?php
-include 'db.php';
-
 session_start();
-error_reporting(0);
-
-if (isset($_POST['submit'])) {
-    $notelp = $conn->real_escape_string($_POST['notelp']);
-    $password = $conn->real_escape_string($_POST['password']);
-    // $password = md5($_POST['password']);
-
-    $sql = "SELECT * FROM user WHERE notelp='$notelp'";
-    $result = mysqli_query($conn, $sql);
-    if ($result->num_rows > 0) {
-        $row = mysqli_fetch_assoc($result);
-
-        if (password_verify($password, $row["password"])) {
-            $_SESSION['username'] = $row['username'];
-            $_SESSION['notelp'] = $row['notelp'];
-            // print_r($_SESSION);
-            // die($_SESSION['notelp'] . $_SESSION['username']);
-            header("Location: home.php");
-            exit();
-        } else {
-            echo "<script>alert('Password anda salah!')</script>";
-        }
-    } else {
-        echo "<script>alert('Nomor telepon belum terdaftar, silahkan daftar terlebih dahulu')</script>";
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +22,7 @@ if (isset($_POST['submit'])) {
                 <div class="container mx-auto my-10 px-7">
                     <h3 class="text-black text-center mb-6 w-3/5  mx-auto">Silahkan mengisi no. telp dan password untuk
                         Log In</h3>
-                    <form action="" method="post">
+                    <form action="controller/auth.php" method="post">
                         <div class="w-full px-4 mb-8">
                             <label for="notelp" class="text-black font-bold">No Telpon</label>
                             <input type="text" id="notelp" name="notelp" class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]" required>
@@ -80,7 +52,10 @@ if (isset($_POST['submit'])) {
         </div>
     </footer>
     <!-- Footer End -->
-
+    <?php if (isset($_SESSION['msg'])) : ?>
+        <?= $_SESSION['msg']; ?>
+        <?php unset($_SESSION['msg']); ?>
+    <?php endif; ?>
     <script src="dist/js/script.js"></script>
 </body>
 

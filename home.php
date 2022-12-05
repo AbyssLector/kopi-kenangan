@@ -181,6 +181,7 @@ if (!isset($_SESSION['notelp']) && !isset($_SESSION['username'])) {
   <!-- Footer End -->
 
   <script src="dist/js/script.js"></script>
+  <script src="dist/js/cart.js"></script>
 </body>
 
 </html>
