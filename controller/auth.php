@@ -23,8 +23,11 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
             $_SESSION['msg'] = "<script>alert('Password anda salah!')</script>";
             // echo "<script>alert('Password anda salah!')</script>";
             header("Location: http://localhost/kopi-kenangan/login.php");
+            exit();
         }
     } else {
-        echo "<script>alert('Nomor telepon belum terdaftar, silahkan daftar terlebih dahulu')</script>";
+        $_SESSION['msg'] = "<script>alert('Nomor telepon belum terdaftar, silahkan daftar terlebih dahulu')</script>";
+        header("Location: http://localhost/kopi-kenangan/login.php");
+        exit();
     }
 }

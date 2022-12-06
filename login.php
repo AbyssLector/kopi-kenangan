@@ -35,7 +35,7 @@ session_start();
                             <button type="submit" name="submit" value="submit" class="w-full py-2 bg-[#BB2028] rounded-xl text-white font-bold text-center hover:opacity-80">Log In</button>
                         </div>
                     </form>
-                    <p class="text-center">Doesn't have account yet? <a href="\register.php" class="text-red-600">Register here</a></p>
+                    <p class="text-center">Doesn't have account yet? <a href="register.php" class="text-red-600">Register here</a></p>
                 </div>
             </div>
         </div>

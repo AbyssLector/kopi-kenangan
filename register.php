@@ -23,10 +23,10 @@ session_start();
     <!-- login section start-->
     <section class="bg-kopkengrey h-screen flex flex-wrap">
         <div class="px-4 w-1/3 flex mx-auto items-center">
-            <div name="login" class="bg-white rounded-xl overflow-hidden shadow-lg">
+            <div name="login" class="bg-white rounded-xl overflow-hidden shadow-lg border-2 border-black">
                 <div class="container mx-auto my-10 px-7">
                     <h3 class="text-black text-center mb-6 w-3/5  mx-auto">Silahkan isi data berikut untuk mendaftarkan akun anda</h3>
-                    <form action="" method="post">
+                    <form action="controller/regist.php" method="post">
                         <div class="w-full px-4 mb-8">
                             <label for="username" class="text-black font-bold">Username</label>
                             <input type="text" id="username" name="username" class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]" required>
