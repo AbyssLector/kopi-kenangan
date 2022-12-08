@@ -1,7 +1,7 @@
 <?php
-include 'config/db.php';
-// session_regenerate_id(TRUE);
-session_start();
+// include 'config/db.php';
+// // session_regenerate_id(TRUE);
+// session_start();
 
 ?>
 
@@ -21,32 +21,33 @@ session_start();
 
 <body>
     <!-- login section start-->
-    <section class="bg-kopkengrey h-screen flex flex-wrap">
-        <div class="px-4 w-1/3 flex mx-auto items-center">
-            <div name="login" class="bg-white rounded-xl overflow-hidden shadow-lg border-2 border-black">
+    <section class="h-screen flex flex-wrap">
+        <div class="container px-4 w-1/3 flex mx-auto items-center">
+            <div name="login" class="bg-white rounded-xl overflow-hidden shadow-lg mx-auto border-black border-2">
                 <div class="container mx-auto my-10 px-7">
                     <h3 class="text-black text-center mb-6 w-3/5  mx-auto">Silahkan isi data berikut untuk mendaftarkan akun anda</h3>
-                    <form action="controller/regist.php" method="post">
+                    <form action="controller/auth.php" method="post">
                         <div class="w-full px-4 mb-8">
-                            <label for="username" class="text-black font-bold">Username</label>
-                            <input type="text" id="username" name="username" class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]" required>
+                            <label for="uname" class="text-black font-bold">Username</label>
+                            <input type="text" id="uname" name="uname" class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]" required>
                         </div>
                         <div class="w-full px-4 mb-8">
                             <label for="notelp" class="text-black font-bold">No Telpon</label>
                             <input type="text" id="notelp" name="notelp" class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]" required>
                         </div>
                         <div class="w-full px-4 mb-8">
-                            <label for="password" class="text-black font-bold">Password</label>
-                            <input type="password" id="password" name="password" class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]" required>
+                            <label for="pass" class="text-black font-bold">Password</label>
+                            <input type="password" id="pass" name="password" class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]" required>
                         </div>
                         <div class="w-full px-4 mb-8">
-                            <label for="confirmpassword" class="text-black font-bold">Confirm Password</label>
-                            <input type="password" id="confirmpass" name="confirmpassword" class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]">
+                            <label for="confirmpass" class="text-black font-bold">Confirm Password</label>
+                            <input type="password" id="confirmpass" name="confirmpassword" class="w-full bg-[#F4F4F4] text-black p-3 rounded-md focus:outline-none focus:ring-[#BB2028] focus:ring-1 focus:border-[#BB2028]" required>
                         </div>
                         <div class="w-full px-4 mb-8">
                             <button type="submit" name="submit" value="submit" class="w-full py-2 bg-[#BB2028] rounded-xl text-white font-bold text-center hover:opacity-80">Register</button>
                         </div>
                     </form>
+                    <p class="text-center">Have an account? <a href="login.php" class="text-red-600">Login here</a></p>
                 </div>
             </div>
         </div>

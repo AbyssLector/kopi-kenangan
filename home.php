@@ -18,6 +18,7 @@ if (!isset($_SESSION['notelp']) && !isset($_SESSION['username'])) {
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="dist/js/cart.js" async></script>
 </head>
 
 <body>
@@ -59,82 +60,92 @@ if (!isset($_SESSION['notelp']) && !isset($_SESSION['username'])) {
   <section id="product" class="px-32 py-2 bg-[#F4F4F4]">
     <div class="flex flex-wrap mt-28 mb-32">
       <div class="w-3/5 pr-5">
-        <div class="grid grid-cols-2 gap-6 w-full">
-          <?php for ($i = 1; $i <= 10; $i++) : ?>
-            <div class="relative mx-auto w-full">
-              <div class="shadow-lg p-4 rounded-lg bg-white">
-                <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
-                  <img src="dist/img/placeholder.png" alt="makan" class="p-8 rounded-t-lg" />
+        <div class="grid grid-cols-2 gap-6 w-full product-container">
+          <div class="relative mx-auto w-full product-card">
+            <div class="shadow-lg p-4 rounded-lg bg-white product-detail">
+              <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
+                <img src="dist/img/placeholder.png" alt="makan" class="p-8 rounded-t-lg" />
+              </div>
+              <div class="mt-1 product-name">
+                <h2 class="font-bold text-base md:text-lg text-gray-800">Kenangan Mantan 1</h2>
+              </div>
+              <div class="grid grid-cols-2 mt-2 product-price">
+                <div class="flex items-center">
+                  <p class="text-sm text-gray-800">Rp 17000</p>
                 </div>
-
-                <div class="mt-1">
-                  <h2 class="font-bold text-base md:text-lg text-gray-800">Kenangan Mantan <?= $i; ?></h2>
-                </div>
-
-                <div class="grid grid-cols-2 mt-2">
-                  <div class="flex items-center">
-                    <p class="text-sm text-gray-800">Rp 20.000,00</p>
-                  </div>
-
-                  <div class="flex justify-end">
-                    <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80">
-                      <i class="fa-solid fa-plus "></i>
-                    </button>
-                    </button>
-                  </div>
+                <div class="flex justify-end">
+                  <button class="btn-add-to-cart bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80">
+                    <i class="fa-solid fa-plus "></i>
+                  </button>
                 </div>
               </div>
             </div>
-          <?php endfor; ?>
+          </div>
+          <div class="relative mx-auto w-full product-card">
+            <div class="shadow-lg p-4 rounded-lg bg-white product-detail">
+              <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
+                <img src="dist/img/placeholder.png" alt="makan" class="p-8 rounded-t-lg" />
+              </div>
+              <div class="mt-1 product-name">
+                <h2 class="font-bold text-base md:text-lg text-gray-800">Kopi Susu</h2>
+              </div>
+              <div class="grid grid-cols-2 mt-2 product-price">
+                <div class="flex items-center">
+                  <p class="text-sm text-gray-800">Rp 18000</p>
+                </div>
+                <div class="flex justify-end">
+                  <button class="btn-add-to-cart bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80">
+                    <i class="fa-solid fa-plus "></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative mx-auto w-full product-card">
+            <div class="shadow-lg p-4 rounded-lg bg-white product-detail">
+              <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
+                <img src="dist/img/placeholder.png" alt="makan" class="p-8 rounded-t-lg" />
+              </div>
+              <div class="mt-1 product-name">
+                <h2 class="font-bold text-base md:text-lg text-gray-800">Kenangan Hakim Ke-12</h2>
+              </div>
+              <div class="grid grid-cols-2 mt-2 product-price">
+                <div class="flex items-center">
+                  <p class="text-sm text-gray-800">Rp 19000</p>
+                </div>
+                <div class="flex justify-end">
+                  <button class="btn-add-to-cart bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80">
+                    <i class="fa-solid fa-plus "></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="relative mx-auto w-full product-card">
+            <div class="shadow-lg p-4 rounded-lg bg-white product-detail">
+              <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
+                <img src="dist/img/placeholder.png" alt="makan" class="p-8 rounded-t-lg" />
+              </div>
+              <div class="mt-1 product-name">
+                <h2 class="font-bold text-base md:text-lg text-gray-800">Kopi Hitam</h2>
+              </div>
+              <div class="grid grid-cols-2 mt-2 product-price">
+                <div class="flex items-center">
+                  <p class="text-sm text-gray-800">Rp 20000</p>
+                </div>
+                <div class="flex justify-end">
+                  <button class="btn-add-to-cart bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80">
+                    <i class="fa-solid fa-plus "></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="w-full lg:w-2/5 pl-5 border-l-[1.5px]">
         <div name="list-item" class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
-          <div class="container mx-auto px-7">
-            <div class="border-b py-5 flex justify-between">
-              <div class="my-auto">
-                <h3 class="font-bold">Kopi Kenangan Mantan</h3>
-                <p>Rp. 19.000</p>
-              </div>
-              <div class="my-auto">
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80"><i class="fa-solid fa-minus"></i></button>
-                <p class="inline-block mx-5">1</p>
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80"><i class="fa-solid fa-plus "></i></button>
-              </div>
-            </div>
-            <div class="border-b py-5 flex justify-between">
-              <div class="my-auto">
-                <h3 class="font-bold">Kopi Kenangan Mantan</h3>
-                <p>Rp. 19.000</p>
-              </div>
-              <div class="my-auto">
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80"><i class="fa-solid fa-minus"></i></button>
-                <p class="inline-block mx-5">1</p>
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80"><i class="fa-solid fa-plus "></i></button>
-              </div>
-            </div>
-            <div class="border-b py-5 flex justify-between">
-              <div class="my-auto">
-                <h3 class="font-bold">Kopi Kenangan Mantan</h3>
-                <p>Rp. 19.000</p>
-              </div>
-              <div class="my-auto">
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80"><i class="fa-solid fa-minus"></i></button>
-                <p class="inline-block mx-5">1</p>
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80"><i class="fa-solid fa-plus "></i></button>
-              </div>
-            </div>
-            <div class="border-b py-5 flex justify-between">
-              <div class="my-auto">
-                <h3 class="font-bold">Kopi Kenangan Mantan</h3>
-                <p>Rp. 19.000</p>
-              </div>
-              <div class="my-auto">
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80"><i class="fa-solid fa-minus"></i></button>
-                <p class="inline-block mx-5">1</p>
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80"><i class="fa-solid fa-plus "></i></button>
-              </div>
-            </div>
+          <div class="container mx-auto px-7 cart-container">
           </div>
         </div>
         <div name="invoice" class="bg-white rounded-xl overflow-hidden shadow-lg mb-10">
@@ -142,22 +153,13 @@ if (!isset($_SESSION['notelp']) && !isset($_SESSION['username'])) {
             <h3 class="text-black font-bold">Saldo</h3>
             <div class="mt-2 flex items-center justify-between relative">
               <img src="dist/img/logo-gopay.png" alt="gopay" class="inline-block w-[66px]">
-              <p class="inline-block font-bold">Rp. 200.000</p>
+              <p class="inline-block font-bold">Rp 200.000</p>
             </div>
             <hr class="mt-5">
             <h3 class="mt-2 text-black font-bold">Detail Pembayaran</h3>
             <div class="mt-2 flex items-center justify-between relative">
-              <p>Harga Item</p>
-              <p class="inline-block">Rp. 19.000</p>
-            </div>
-            <div class="mt-2 flex items-center justify-between relative">
-              <p>Ongkos Kirim</p>
-              <p class="inline-block">Rp. 10.000</p>
-            </div>
-            <hr class="mt-5">
-            <div class="mt-2 flex items-center justify-between relative">
               <p>Total Harga</p>
-              <p class="inline-block">Rp. 29.000</p>
+              <p class="inline-block total-price">Rp 0</p>
             </div>
             <button class="w-full py-2 mt-6 bg-[#BB2028] rounded-xl text-white font-bold text-center hover:opacity-80">Checkout</button>
           </div>
@@ -179,7 +181,6 @@ if (!isset($_SESSION['notelp']) && !isset($_SESSION['username'])) {
   <!-- Footer End -->
 
   <script src="dist/js/script.js"></script>
-  <script src="dist/js/cart.js"></script>
 </body>
 
 </html>
