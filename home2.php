@@ -20,7 +20,6 @@ $result = json_decode($result);
 if (!$result->data->user_balance) {
   $balance = "Rp. -";
 } else {
-
   $balance = "Rp. " . number_format($result->data->user_balance, 2, ',', '.');
 }
 // echo $_REQUEST['price'];
@@ -38,32 +37,35 @@ if (!$result->data->user_balance) {
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="dist/js/cart.js" async></script>
 </head>
 
 <body>
   <!-- Header Start -->
   <header class="bg-white fixed top-0 left-0 w-full flex items-center z-50 mb-0">
-    <div class="container">
+    <div class="container mx-auto w-[85%]">
       <div class="flex items-center justify-between relative">
-        <div class="px-4">
-          <img src="dist/img/logo.png" alt="logo kopken" class="w-20 block py-4 pl-6">
-        </div>
-        <div class="flex items-center px-4">
+        <img src="dist/img/logo.png" alt="logo kopken" class="w-20 block py-4 pl-6">
+        <div class="flex items-center">
           <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
             <span class="hamburger-line origin-top-left transition duration-300 ease-in-out"></span>
             <span class="hamburger-line transition duration-300 ease-in-out"></span>
             <span class="hamburger-line origin-bottom-left transition duration-300 ease-in-out"></span>
           </button>
+
           <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
             <ul class="block lg:flex">
               <li class="group">
                 <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">Home</a>
               </li>
               <li class="group">
-                <a href="history.php" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">History</a>
+                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">History</a>
               </li>
               <li class="group">
-                <a href="logout.php" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">Logout</a>
+                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">Login</a>
+              </li>
+              <li class="group">
+                <a href="#" class="text-base text-black py-2 mx-8 flex group-hover:text-[#BB2028]">Logout</a>
               </li>
             </ul>
           </nav>
@@ -72,35 +74,33 @@ if (!$result->data->user_balance) {
     </div>
   </header>
   <!-- Header End -->
+
   <!-- Product Section Start -->
   <section id="product" class="px-32 py-2 bg-[#F4F4F4]">
     <div class="flex flex-wrap mt-28 mb-32">
       <div class="w-3/5 pr-5">
-        <div class="grid grid-cols-2 gap-6 w-full">
-          <!-- card start -->
-          <div class="relative mx-auto w-full product-card" id="kkm">
+        <div class="grid grid-cols-2 gap-6 w-full product-container">
+          <div class="relative mx-auto w-full product-card">
             <div class="shadow-lg p-4 rounded-lg bg-white product-detail">
               <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
                 <img src="dist/img/placeholder.png" alt="makan" class="p-8 rounded-t-lg" />
               </div>
               <div class="mt-1 product-name">
-                <h2 class="font-bold text-base md:text-lg text-gray-800">Kenangan Mantan</h2>
+                <h2 class="font-bold text-base md:text-lg text-gray-800">Kopi Kenangan Mantan</h2>
               </div>
               <div class="grid grid-cols-2 mt-2 product-price">
                 <div class="flex items-center">
-                  <p class="text-sm text-gray-800">Rp 19000</p>
+                  <p class="text-sm text-gray-800">Rp 17000</p>
                 </div>
                 <div class="flex justify-end">
-                  <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80" id="kkm-add">
+                  <button class="btn-add-to-cart bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80">
                     <i class="fa-solid fa-plus "></i>
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Card end -->
-          <!-- card start -->
-          <div class="relative mx-auto w-full product-card" id="kkm">
+          <div class="relative mx-auto w-full product-card">
             <div class="shadow-lg p-4 rounded-lg bg-white product-detail">
               <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
                 <img src="dist/img/placeholder.png" alt="makan" class="p-8 rounded-t-lg" />
@@ -110,41 +110,37 @@ if (!$result->data->user_balance) {
               </div>
               <div class="grid grid-cols-2 mt-2 product-price">
                 <div class="flex items-center">
-                  <p class="text-sm text-gray-800">Rp 17000</p>
+                  <p class="text-sm text-gray-800">Rp 18000</p>
                 </div>
                 <div class="flex justify-end">
-                  <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80" id="susu-add">
+                  <button class="btn-add-to-cart bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80">
                     <i class="fa-solid fa-plus "></i>
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Card end -->
-          <!-- card start -->
-          <div class="relative mx-auto w-full product-card" id="kkm">
+          <div class="relative mx-auto w-full product-card">
             <div class="shadow-lg p-4 rounded-lg bg-white product-detail">
               <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
                 <img src="dist/img/placeholder.png" alt="makan" class="p-8 rounded-t-lg" />
               </div>
               <div class="mt-1 product-name">
-                <h2 class="font-bold text-base md:text-lg text-gray-800">Kopi Bareng Doi</h2>
+                <h2 class="font-bold text-base md:text-lg text-gray-800">Kopi Bareng doi</h2>
               </div>
               <div class="grid grid-cols-2 mt-2 product-price">
                 <div class="flex items-center">
-                  <p class="text-sm text-gray-800">Rp 23000</p>
+                  <p class="text-sm text-gray-800">Rp 19000</p>
                 </div>
                 <div class="flex justify-end">
-                  <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80" id="kbd-add">
+                  <button class="btn-add-to-cart bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80">
                     <i class="fa-solid fa-plus "></i>
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Card end -->
-          <!-- card start -->
-          <div class="relative mx-auto w-full product-card" id="kkm">
+          <div id="kopi_susu" class="relative mx-auto w-full product-card hidden">
             <div class="shadow-lg p-4 rounded-lg bg-white product-detail">
               <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
                 <img src="dist/img/placeholder.png" alt="makan" class="p-8 rounded-t-lg" />
@@ -154,74 +150,21 @@ if (!$result->data->user_balance) {
               </div>
               <div class="grid grid-cols-2 mt-2 product-price">
                 <div class="flex items-center">
-                  <p class="text-sm text-gray-800">Rp 14000</p>
+                  <p class="text-sm text-gray-800">Rp 20000</p>
                 </div>
                 <div class="flex justify-end">
-                  <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80" id="hitam-add">
+                  <button class="btn-add-to-cart bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80">
                     <i class="fa-solid fa-plus "></i>
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Card end -->
         </div>
       </div>
       <div class="w-full lg:w-2/5 pl-5 border-l-[1.5px]">
         <div name="list-item" class="bg-white rounded-xl shadow-lg overflow-hidden mb-10">
           <div class="container mx-auto px-7 cart-container">
-            <!-- cart kenangang mantan start -->
-            <div class="border-b py-5 flex justify-between product hidden" id="kkm-cart">
-              <div class="my-auto product-details">
-                <h3 class="font-bold">Kopi Kenangan Mantan </h3>
-                <p>Rp 19000</p>
-              </div>
-              <div class="my-auto product-quantities">
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80" id="min-kkm"><i class="fa-solid fa-minus"></i></button>
-                <p class="inline-block mx-5 product-quantity" id="kkm-quantity">0</p>
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80" id="plus-kkm"><i class="fa-solid fa-plus "></i></button>
-              </div>
-            </div>
-            <!-- cart kenangang mantan end -->
-            <!-- cart susu start -->
-            <div class="border-b py-5 flex justify-between product hidden" id="susu-cart">
-              <div class="my-auto product-details">
-                <h3 class="font-bold">Kopi Susu </h3>
-                <p>Rp 17000</p>
-              </div>
-              <div class="my-auto product-quantities">
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80" id="min-susu"><i class="fa-solid fa-minus"></i></button>
-                <p class="inline-block mx-5 product-quantity" id="susu-quantity">0</p>
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80" id="plus-susu"><i class="fa-solid fa-plus "></i></button>
-              </div>
-            </div>
-            <!-- cart susu end -->
-            <!-- cart bareng doi start -->
-            <div class="border-b py-5 flex justify-between product hidden" id="kbd-cart">
-              <div class="my-auto product-details">
-                <h3 class="font-bold">Kopi Bareng Doi</h3>
-                <p>Rp 23000</p>
-              </div>
-              <div class="my-auto product-quantities">
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80" id="min-kbd"><i class="fa-solid fa-minus"></i></button>
-                <p class="inline-block mx-5 product-quantity" id="kbd-quantity">0</p>
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80" id="plus-kbd"><i class="fa-solid fa-plus "></i></button>
-              </div>
-            </div>
-            <!-- cart bareng doi end -->
-            <!-- cart hitam start -->
-            <div class="border-b py-5 flex justify-between product hidden" id="hitam-cart">
-              <div class="my-auto product-details">
-                <h3 class="font-bold">Kopi Hitam </h3>
-                <p>Rp 14000</p>
-              </div>
-              <div class="my-auto product-quantities">
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80" id="min-hitam"><i class="fa-solid fa-minus"></i></button>
-                <p class="inline-block mx-5 product-quantity" id="hitam-quantity">0</p>
-                <button class="bg-[#BB2028] w-7 h-7 rounded-full text-white hover:bg-opacity-80" id="plus-hitam"><i class="fa-solid fa-plus "></i></button>
-              </div>
-            </div>
-            <!-- cart hitam end -->
           </div>
         </div>
         <div name="invoice" class="bg-white rounded-xl overflow-hidden shadow-lg mb-10">
@@ -229,21 +172,22 @@ if (!$result->data->user_balance) {
             <h3 class="text-black font-bold">Saldo</h3>
             <div class="mt-2 flex items-center justify-between relative">
               <img src="dist/img/logo-gopay.png" alt="gopay" class="inline-block w-[66px]">
-              <p class="inline-block font-bold"><?= $balance; ?></p>
+              <p class="inline-block font-bold"><?= $balance ?></p>
             </div>
             <hr class="mt-5">
             <h3 class="mt-2 text-black font-bold">Detail Pembayaran</h3>
             <div class="mt-2 flex items-center justify-between relative">
               <p>Total Harga</p>
-              <p class="inline-block total-price">Rp 0</p>
+              <p id="total_price" class="inline-block total-price">Rp 0</p>
             </div>
-            <button onclick="checkout()" class="w-full py-2 mt-6 bg-[#BB2028] rounded-xl text-white font-bold text-center hover:opacity-80">Checkout</button>
+            <button onclick="checkout();" class="w-full py-2 mt-6 bg-[#BB2028] rounded-xl text-white font-bold text-center hover:opacity-80">Checkout</button>
           </div>
         </div>
       </div>
     </div>
   </section>
   <!-- Produt Section End -->
+
   <!-- Footer Start -->
   <footer class="bg-black pt-24 pb-12">
     <div class="flex flex-wrap ">
@@ -256,7 +200,6 @@ if (!$result->data->user_balance) {
   <!-- Footer End -->
   <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="dist/js/script.js"></script>
-  <script src="dist/js/cart.js"></script>
 </body>
 
 </html>

@@ -7,7 +7,7 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
     $confirmpassword = $conn->real_escape_string($_POST['confirmpassword']);
     $password = $conn->real_escape_string($_POST['password']);
     // $password = md5($_POST['password']);
-    if (is_numeric($notelp) != 1) {
+    if (!is_numeric($notelp)) {
         $_SESSION['msg'] = "<script>alert('Nomor telpon tidak valid')</script>";
         header("Location: http://localhost/kopi-kenangan/register.php");
         exit();
@@ -20,14 +20,21 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
         header("Location: http://localhost/kopi-kenangan/register.php");
         exit();
     } else {
-        $password = password_hash($password, PASSWORD_DEFAULT);
-
-        $sql = "INSERT INTO user (username,notelp,password) VALUES ('$username','$notelp','$password')";
-        if ($conn->query($sql)) {
-            header("Location: login.php");
+        $result = $conn->query("SELECT * FROM user WHERE notelp='{$notelp}' OR username='{$username}'");
+        if ($result->num_rows > 0) {
+            $_SESSION['msg'] = "<script>alert('Username atau Nomor Telepon sudah terdaftar')</script>";
+            header("Location: http://localhost/kopi-kenangan/register.php");
             exit();
         } else {
-            echo "<script>alert('Server Error')</script>";
+            $password = password_hash($password, PASSWORD_DEFAULT);
+
+            $sql = "INSERT INTO user (username,notelp,password) VALUES ('$username','$notelp','$password')";
+            if ($conn->query($sql)) {
+                header("Location: http://localhost/kopi-kenangan/login.php");
+                exit();
+            } else {
+                echo "<script>alert('Server Error')</script>";
+            }
         }
     }
 }

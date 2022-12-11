@@ -13,10 +13,32 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
         $row = mysqli_fetch_assoc($result);
 
         if (password_verify($password, $row["password"])) {
+            $url = 'http://localhost:3000/api/users';
+
+            //The data you want to send via POST
+            $fields = [
+                'phone' => $row['notelp'],
+                'password' => $password,
+            ];
+
+            //url-ify the data for the POST
+            $fields_string = json_encode($fields);
+            // echo $fields_string;
+
+            //open connection
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/json"));
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+            $result = curl_exec($ch);
+            $result = json_decode($result);
+
+            //execute post
             $_SESSION['username'] = $row['username'];
             $_SESSION['notelp'] = $row['notelp'];
-            // print_r($_SESSION);
-            // die($_SESSION['notelp'] . $_SESSION['username']);
+            $_SESSION['jwt'] = $result->token;
             header("Location: http://localhost/kopi-kenangan/home.php");
             exit();
         } else {

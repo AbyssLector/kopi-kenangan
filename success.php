@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!$_SESSION['success']) {
+    header("Location: home.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +25,8 @@
             <div name="login" class="bg-white rounded-xl overflow-hidden shadow-lg mx-auto border-black border-2">
                 <div class="container mx-auto my-10 px-7">
                     <h3 class="text-black text-center mb-6 w-3/5  mx-auto"><span class="font-bold text-red-600">Selamat!</span>
-                        Pemesanan berhasil dilakukan. Silahkan tunggu. Pesanan anda akan diantar dalam waktu yang dekat.</h3>
+                        Pemesanan berhasil dilakukan. Silahkan tunggu. Pesanan anda akan diantar dalam waktu yang dekat.
+                    </h3>
                     <div class="mx-auto w-4/5 py-2 mb-8 bg-[#BB2028] rounded-xl hover:opacity-80 text-center">
                         <a href="home.php" class="text-white font-bold">Kembali ke beranda</a>
                     </div>
@@ -39,10 +47,7 @@
         </div>
     </footer>
     <!-- Footer End -->
-    <?php if (isset($_SESSION['msg'])) : ?>
-        <?= $_SESSION['msg']; ?>
-        <?php unset($_SESSION['msg']); ?>
-    <?php endif; ?>
+    <?php unset($_SESSION['success']); ?>
     <script src="dist/js/script.js"></script>
 </body>
 
