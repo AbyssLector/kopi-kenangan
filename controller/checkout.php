@@ -6,10 +6,10 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == "POST") {
     $post = file_get_contents('php://input');
     $data = json_decode($post);
 
-    $price = $data->{'Kopi Kenangan Mantan'} * 17000;
-    $price = $price + $data->{'Kopi Susu'} * 18000;
-    $price = $price + $data->{'Kopi Bareng doi'} * 19000;
-    $price = $price + $data->{'Kopi Hitam'} * 20000;
+    $price = $data->{'Kopi Kenangan Mantan'} * 19000;
+    $price = $price + $data->{'Kopi Susu'} * 17000;
+    $price = $price + $data->{'Kopi Bareng doi'} * 23000;
+    $price = $price + $data->{'Kopi Hitam'} * 14000;
     // print_r($data);
     // echo $price;
     //The data you want to send via POST
