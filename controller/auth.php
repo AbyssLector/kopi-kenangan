@@ -35,12 +35,19 @@ if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
             $result = curl_exec($ch);
             $result = json_decode($result);
 
-            //execute post
-            $_SESSION['username'] = $row['username'];
-            $_SESSION['notelp'] = $row['notelp'];
-            $_SESSION['jwt'] = $result->token;
-            header("Location: http://localhost/kopi-kenangan/home.php");
-            exit();
+            if ($result->status != 200) {
+                $_SESSION['msg'] = "<script>alert('Invalid login Gopay')</script>";
+                // echo "<script>alert('Password anda salah!')</script>";
+                header("Location: http://localhost/kopi-kenangan/login.php");
+                exit();
+            } else {
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['notelp'] = $row['notelp'];
+                $_SESSION['jwt'] = $result->token;
+
+                header("Location: http://localhost/kopi-kenangan/home.php");
+                exit();
+            }
         } else {
             $_SESSION['msg'] = "<script>alert('Password anda salah!')</script>";
             // echo "<script>alert('Password anda salah!')</script>";
